@@ -23,14 +23,23 @@ export default class App extends Component<Props> {
     if(this.state.placeName.trim() === '') {
       alert('String required');
     }
-
+    let placeName = this.state.placeName;
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(prevState.placeName),
-        placeName: '',
+        places: prevState.places.concat({
+          key: Math.random().toString(),
+          value: placeName
+        })
       }
     })
+  };
 
+  placeDeletedHandler = (key) => {
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter((place) => place.key !== key )
+      }
+    })
   }
 
   render() {
@@ -42,7 +51,9 @@ export default class App extends Component<Props> {
           placeNameChange={this.placeNameChange}
           onPressHandler={this.onPressHandler}
         />
-        <PlaceList places={this.state.places} />
+        <PlaceList places={this.state.places}
+          onItemDeleted={this.placeDeletedHandler}
+        />
       </View>
     );
   }

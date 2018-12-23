@@ -12,7 +12,7 @@ const PlaceInput = ({placeName, placeNameChange, onPressHandler}) => (
       title="button"
       style={styles.placeButton}
       onPress={onPressHandler}
-      />
+    />
   </View>
 );
 
