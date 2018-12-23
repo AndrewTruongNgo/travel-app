@@ -3,6 +3,7 @@ import { StyleSheet, View} from 'react-native';
 
 import PlaceInput from './src/components/PlaceInput/PlaceInput.js';
 import PlaceList from './src/components/PlaceList/PlaceList.js';
+// import placeImage from './src/assets/place.jpg';
 
 export default class App extends Component<Props> {
   constructor(props) {
@@ -28,7 +29,10 @@ export default class App extends Component<Props> {
       return {
         places: prevState.places.concat({
           key: Math.random().toString(),
-          value: placeName
+          name: placeName,
+          image: {
+            uri: "http://japan.com/wp-content/uploads/japan_home_featured_01.jpg"
+          },
         })
       }
     })
